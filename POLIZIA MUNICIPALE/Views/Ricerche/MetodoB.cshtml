@@ -1,0 +1,36 @@
+﻿@model List<VerbaliTrascritti>
+
+
+
+    <div class="container mt-4">
+        <h2>Risultati MetodoB</h2>
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID Anagrafica</th>
+                        <th>Cognome</th>
+                        <th>Nome</th>
+                        <th>Totale Punti Decurtati</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var verbaleTrascritto in Model)
+                    {
+                        <tr>
+                            <td>@verbaleTrascritto.IDAnagrafica</td>
+                            <td>@verbaleTrascritto.Cognome</td>
+                            <td>@verbaleTrascritto.Nome</td>
+                            <td>@verbaleTrascritto.TotaleVerbaliTrascritti</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="text-muted">Nessun risultato trovato.</p>
+        }
+ </div>

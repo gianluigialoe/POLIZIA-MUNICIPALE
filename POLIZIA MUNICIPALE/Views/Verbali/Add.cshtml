@@ -1,0 +1,55 @@
+﻿@model POLIZIA_MUNICIPALE.Models.Verbale
+
+
+
+<h2>Aggiungi Verbale</h2>
+
+@if (TempData["MessageSuccess"] is not null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["MessageSuccess"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+else if (ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger" role="alert">
+        Si è verificato un errore durante l'inserimento nel database.
+    </div>
+}
+
+<form asp-controller="Verbali" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="DataViolazione">Data Violazione:</label>
+        <input type="date" asp-for="DataViolazione" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IndirizzoViolazione">Indirizzo Violazione:</label>
+        <input type="text" asp-for="IndirizzoViolazione" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Nominativo_Agente">Nominativo Agente:</label>
+        <input type="text" asp-for="Nominativo_Agente" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DataTrascrizioneVerbale">Data Trascrizione Verbale:</label>
+        <input type="date" asp-for="DataTrascrizioneVerbale" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Importo">Importo:</label>
+        <input type="number" asp-for="Importo" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DecurtamentoPunti">Decurtamento Punti:</label>
+        <input type="number" asp-for="DecurtamentoPunti" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IDAnagrafica">ID Anagrafica:</label>
+        <input type="number" asp-for="IDAnagrafica" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="IDViolazione">ID Violazione:</label>
+        <input type="number" asp-for="IDViolazione" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Aggiungi Verbale</button>
+</form>

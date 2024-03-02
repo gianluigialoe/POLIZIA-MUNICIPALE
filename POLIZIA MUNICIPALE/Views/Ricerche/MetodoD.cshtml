@@ -1,0 +1,36 @@
+﻿@model List<VerbaleDettaglio>
+
+<h2>Elenco Violazioni con Importo Superiore a 400 Euro</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Anagrafica</th>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Importo</th>
+                <th>Data Violazione</th>
+                <th>Decurtamento Punti</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var verbale in Model)
+            {
+                <tr>
+                    <td>@verbale.IDAnagrafica</td>
+                    <td>@verbale.Cognome</td>
+                    <td>@verbale.Nome</td>
+                    <td>@verbale.Importo</td>
+                    <td>@verbale.DataViolazione.ToShortDateString()</td>
+                    <td>@verbale.DecurtamentoPunti</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nessun risultato trovato.</p>
+}

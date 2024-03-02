@@ -1,0 +1,40 @@
+﻿@model List<VerbaleDettaglio>
+
+    <div class="container mt-4">
+        <h2>Risultati MetodoC</h2>
+
+        @if (Model != null && Model.Count > 0)
+        {
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID Anagrafica</th>
+                        <th>Cognome</th>
+                        <th>Nome</th>
+                        <th>Importo</th>
+                        <th>Data Violazione</th>
+                        <th>Totale Punti Decurtati</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var verbaleDettaglio in Model)
+                    {
+                        <tr>
+                            <td>@verbaleDettaglio.IDAnagrafica</td>
+                            <td>@verbaleDettaglio.Cognome</td>
+                            <td>@verbaleDettaglio.Nome</td>
+                            <td>@verbaleDettaglio.Importo</td>
+                            <td>@verbaleDettaglio.DataViolazione.ToShortDateString()</td>
+                        <td>@verbaleDettaglio.DecurtamentoPunti</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="text-muted">Nessun risultato trovato.</p>
+        }
+    </div>
+
+</html>

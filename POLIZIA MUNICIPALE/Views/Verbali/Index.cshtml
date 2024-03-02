@@ -1,0 +1,54 @@
+﻿@model List<Verbale>
+
+@{
+    ViewData["Title"] = "Elenco Verbali";
+}@if (TempData["MessageSuccess"] is not null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["MessageSuccess"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+else if (TempData["MessageError"] is not null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["MessageError"]
+    </div>
+}
+
+<div class="container">
+    <h2>Elenco Verbali</h2>
+    <a asp-action="Add" class="btn btn-primary m-3">AGGIUNGI VERBALE </a>
+    <a asp-action="MetodoF" class="btn btn-primary m-3">verbali da contestare</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID Verbale</th>
+                <th>Data Violazione</th>
+                <th>Indirizzo Violazione</th>
+                <th>Nominativo Agente</th>
+                <th>Data Trascrizione Verbale</th>
+                <th>Importo</th>
+                <th>Decurtamento Punti</th>
+                <th>ID Anagrafica</th>
+                <th>ID Violazione</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var verbale in Model)
+            {
+                <tr>
+                    <td>@verbale.IDVERBALE</td>
+                    <td>@verbale.DataViolazione</td>
+                    <td>@verbale.IndirizzoViolazione</td>
+                    <td>@verbale.Nominativo_Agente</td>
+                    <td>@verbale.DataTrascrizioneVerbale</td>
+                    <td>@verbale.Importo</td>
+                    <td>@verbale.DecurtamentoPunti</td>
+                    <td>@verbale.IDAnagrafica</td>
+                    <td>@verbale.IDViolazione</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

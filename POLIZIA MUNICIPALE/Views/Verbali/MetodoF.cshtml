@@ -1,0 +1,38 @@
+﻿@model List<ViolazioneDettaglio>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Scegli una Descrizione</h2>
+
+            @if (Model.Any())
+            {
+                <form method="post" action="@Url.Action("DettagliVerbale", "IlTuoController")">
+                    <div class="form-group">
+                        <label for="descrizioneSelect">Seleziona un VErbale:</label>
+                        <select class="form-control" id="descrizioneSelect" name="IDViolazione">
+                            <option value="">-- Scegli un Verbale--</option>
+                            @foreach (var violazione in Model)
+                            {
+                                <option value="@violazione.IDViolazione">@violazione.Descrizione</option>
+                            }
+                        </select>
+                    </div>
+                    <a asp-controller="Verbali" asp-action="Index" class="btn btn-primary m-3" onclick="mostraAlert()">AGGIUNGI VERBALE</a>
+
+                   
+                
+                </form>
+            }
+            else
+            {
+                <p>Nessuna violazione trovata.</p>
+            }
+        </div>
+    </div>
+</div>
+<script>
+    function mostraAlert() {
+        alert('SEI SICURO DI VOLER CONTESTARE.');
+    }
+</script>
